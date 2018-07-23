@@ -6,7 +6,7 @@ class PlayList extends Component {
   render() {
     return (
       <div className="Playlist">
-        <input value="New Playlist" />
+        <input defaultValue="New Playlist" />
         <TrackList>Tracklist</TrackList>
         <a className="Playlist-save">SAVE TO SPOTIFY</a>
       </div>
