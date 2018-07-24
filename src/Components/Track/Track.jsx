@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
-  state = { isRemoval: true };
+  constructor(props) {
+    super(props);
+    this.state = { isRemoval: true };
+  }
+
   renderAction = () => {
     if (this.state.isRemoval) {
       return <a className="Track-action"> - </a>;
