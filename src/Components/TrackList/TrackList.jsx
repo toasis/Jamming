@@ -6,7 +6,6 @@ class TrackList extends Component {
     return (
       <div className="TrackList">
         {this.props.tracks.map(track => {
-          // Todo:TypeError: Cannot read property 'map' of undefined
           return <Track key={track.id} track={track} />;
         })}
       </div>
