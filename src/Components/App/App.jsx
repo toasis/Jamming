@@ -33,7 +33,7 @@ class App extends Component {
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} />
 
-            <PlayList />
+            <PlayList playListName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
           </div>
         </div>
       </div>
