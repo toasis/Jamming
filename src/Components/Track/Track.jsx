@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
-  state = { isRemoval: true };
 
   renderAction = () => {
-    if (this.state.isRemoval) {
+    if (this.props.state.isRemoval) {
       return <a className="Track-action"> - </a>;
     } else {
       return <a className="Track-action"> - </a>;
     }
   };
+
+
   render() {
     return (
       <div className="Track">
