@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
-
   renderAction = () => {
-    if (this.props.state.isRemoval) {
-      return <a className="Track-action"> - </a>;
-    } else {
-      return <a className="Track-action"> - </a>;
-    }
+    if (this.props.isRemoval) return `<a className ="Track-action"> - </a>`;
+    return `<a className ="Track-action"> + </a>`;
   };
-
-
+  addTrack = () => {
+    console.log("Track is added!");
+  };
   render() {
     return (
       <div className="Track">

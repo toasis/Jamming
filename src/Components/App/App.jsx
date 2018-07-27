@@ -21,12 +21,14 @@ class App extends Component {
       { name: "song E1", artist: "artist E1", album: "Album E1", id: 52 }
     ],
     isRemoval: false
-  }
+  };
   addTrack = track => {
-    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+    if (
+      this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)
+    ) {
       return;
     }
-  }
+  };
   render() {
     return (
       <div>
@@ -36,9 +38,16 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} isRemoval={this.state.isRemoval} />
+            <SearchResults
+              searchResults={this.state.searchResults}
+              onAdd={this.addTrack}
+              isRemoval={this.state.isRemoval}
+            />
 
-            <PlayList playListName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
+            <PlayList
+              playListName={this.state.playlistName}
+              playlistTracks={this.state.playlistTracks}
+            />
           </div>
         </div>
       </div>
