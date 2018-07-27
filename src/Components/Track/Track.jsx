@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
   renderAction = () => {
-    if (this.props.isRemoval) return `<a className ="Track-action"> - </a>`;
-    return `<a className ="Track-action"> + </a>`;
+    const button = this.props.isRemoval ? "+" : "-";
+    return button;
   };
   addTrack = () => {
     console.log("Track is added!");
@@ -17,7 +17,8 @@ class Track extends Component {
             {this.props.track.artist} | {this.props.track.album}
           </p>
         </div>
-        {this.renderAction}
+        <a className="Track-action"> {this.renderAction()} </a>
+        {/* {this.addTrack} */}
       </div>
     );
   }
