@@ -14,21 +14,25 @@ class App extends Component {
     ],
     playlistName: "stronger",
     playlistTracks: [
-      { name: "song A1", artist: "artist A1", album: "Album A1", id: 11 },
-      { name: "song B1", artist: "artist B1", album: "Album B1", id: 21 },
-      { name: "song C1", artist: "artist C1", album: "Album C1", id: 32 },
-      { name: "song D1", artist: "artist D1", album: "Album D1", id: 42 },
-      { name: "song E1", artist: "artist E1", album: "Album E1", id: 52 }
+      { name: "song A", artist: "artist A", album: "Album A", id: 1 },
+      { name: "song B", artist: "artist B", album: "Album B", id: 2 },
+      { name: "song C", artist: "artist C", album: "Album C", id: 3 }
     ],
     isRemoval: false
   };
-  addTrack = track => {
-    if (
-      this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)
-    ) {
-      return;
-    }
+addTrack=()=>{
+  console.log('Track Add!');
+
+}
+
+  removeTrack = removedTrack => {
+    const searchResults = this.state.searchResults.filter(
+      track => removedTrack.id !== track.id
+    );
+    this.setState({ searchResults: searchResults });
+    console.log(searchResults, 'Track removed');
   };
+
   render() {
     return (
       <div>
@@ -47,6 +51,7 @@ class App extends Component {
             <PlayList
               playListName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
+              onRemove = {this.state.removedTrack}
             />
           </div>
         </div>

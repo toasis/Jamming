@@ -8,6 +8,10 @@ class Track extends Component {
   addTrack = () => {
     console.log("Track is added!");
   };
+removeTrack=()=>{
+
+}
+
   render() {
     return (
       <div className="Track">
