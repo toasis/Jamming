@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
   renderAction = () => {
-    const button = this.props.isRemoval ? "-" : "+";
-    return button;
+    const isRemovalVaule = this.props.isRemoval ? "-" : "+";
+    return isRemovalVaule;
   };
   addTrack = () => {
-    console.log("Track is added!");
+  return this.props.onAdd;
   };
 removeTrack=()=>{
-
+  return this.props.onRemove;
 }
 
   render() {
@@ -22,6 +22,7 @@ removeTrack=()=>{
           </p>
         </div>
         <a className="Track-action" onClick = {this.addTrack} cursor="pointer" > {this.renderAction()} </a>
+
         {/* {this.addTrack} */}
       </div>
     );

@@ -51,7 +51,7 @@ addTrack=()=>{
             <PlayList
               playListName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
-              onRemove = {this.state.removedTrack}
+              onRemove = {this.removeTrack}
             />
           </div>
         </div>
