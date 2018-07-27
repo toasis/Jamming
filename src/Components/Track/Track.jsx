@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
   renderAction = () => {
-    const button = this.props.isRemoval ? "+" : "-";
+    const button = this.props.isRemoval ? "-" : "+";
     return button;
   };
   addTrack = () => {
@@ -17,7 +17,7 @@ class Track extends Component {
             {this.props.track.artist} | {this.props.track.album}
           </p>
         </div>
-        <a className="Track-action"> {this.renderAction()} </a>
+        <a className="Track-action" onClick = {this.addTrack} cursor="pointer" > {this.renderAction()} </a>
         {/* {this.addTrack} */}
       </div>
     );
