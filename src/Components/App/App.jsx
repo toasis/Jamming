@@ -22,9 +22,7 @@ class App extends Component {
   };
   addTrack = clickedTrack => {
     console.log(clickedTrack);
-
     let playlistTracks = [...this.state.playlistTracks];
-
     playlistTracks.push(clickedTrack);
     console.log(playlistTracks);
     this.setState({ playlistTracks });
@@ -39,6 +37,13 @@ class App extends Component {
     );
     this.setState({ playlistTracks });
     console.log(playlistTracks, "Track removed!");
+  };
+
+  updatePlaylistName = name => {
+    console.log(name);
+    let playlistName = this.state.playlistName;
+    playlistName = name;
+    this.setState({ playlistName });
   };
 
   render() {
@@ -60,6 +65,7 @@ class App extends Component {
               playListName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
             />
           </div>
         </div>
