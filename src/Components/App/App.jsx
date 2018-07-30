@@ -14,30 +14,31 @@ class App extends Component {
     ],
     playlistName: "stronger",
     playlistTracks: [
-      { name: "song A", artist: "artist A", album: "Album A", id: 1 },
-      { name: "song B", artist: "artist B", album: "Album B", id: 2 },
-      { name: "song C", artist: "artist C", album: "Album C", id: 3 }
+      { name: "song A1", artist: "artist A1", album: "Album A1", id: 6 },
+      { name: "song B1", artist: "artist B1", album: "Album B1", id: 7 },
+      { name: "song C1", artist: "artist C", album: "Album C1", id: 8 }
     ],
     isRemoval: false
   };
-  addTrack = addedTrack => {
-    console.log(addedTrack);
-    console.log("Track added!");
+  addTrack = clickedTrack => {
+    console.log(clickedTrack);
 
     let playlistTracks = [...this.state.playlistTracks];
 
-    playlistTracks.push(addedTrack);
+    playlistTracks.push(clickedTrack);
     console.log(playlistTracks);
-    return playlistTracks;
     this.setState({ playlistTracks });
+    console.log("Track added!");
   };
 
-  removeTrack = removedTrack => {
-    const searchResults = this.state.searchResults.filter(
-      track => removedTrack.id !== track.id
+  removeTrack = clickedTrack => {
+    console.log(clickedTrack);
+    let playlistTracks = [...this.state.playlistTracks];
+    playlistTracks = playlistTracks.filter(
+      track => clickedTrack.id !== track.id
     );
-    this.setState({ searchResults: searchResults });
-    console.log(searchResults, "Track removed");
+    this.setState({ playlistTracks });
+    console.log(playlistTracks, "Track removed!");
   };
 
   render() {
