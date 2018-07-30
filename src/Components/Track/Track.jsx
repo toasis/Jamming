@@ -2,20 +2,25 @@ import React, { Component } from "react";
 import "./Track.css";
 class Track extends Component {
   renderAction = () => {
-    const isRemovalVaule = this.props.isRemoval ? "-" : "+";
-    return isRemovalVaule;
+    if (this.props.isRemoval)
+      return (
+        <a className="Track-action" onClick={this.removeTrack}>
+          -
+        </a>
+      );
+    return (
+      <a className="Track-action" onClick={this.addTrack}>
+        +
+      </a>
+    );
   };
-  //   addTrack = () => {
-  //   return this.props.onAdd;
-  //   };
-  // removeTrack=()=>{
-  //   return this.props.onRemove;
-  // }
-  renderOnClick = () => {
-    const onAdd = this.props.onAdd;
-    const onRemove = this.props.onRemove;
-    return this.props.isRemoval ? onAdd : onRemove;
+  addTrack = () => {
+    return this.props.onAdd(this.props.track);
   };
+  removeTrack = () => {
+    return this.props.onRemove(this.props.track);
+  };
+
   render() {
     return (
       <div className="Track">
@@ -25,16 +30,7 @@ class Track extends Component {
             {this.props.track.artist} | {this.props.track.album}
           </p>
         </div>
-        <a
-          className="Track-action"
-          //onclick should be decided by  its parent component  (SearchResult(onAdd) or Playlist(onRemove) )
-          //TODO:How to pass down the onAdd and onMove props from Tracklist.jsx to Track.jsx?
-          onClick={this.renderOnClick}
-          cursor="pointer"
-        >
-          {this.renderAction()}
-        </a>
-
+        {this.renderAction()}
         {/* {this.addTrack} */}
       </div>
     );

@@ -20,17 +20,16 @@ class App extends Component {
     ],
     isRemoval: false
   };
-addTrack=()=>{
-  console.log('Track Add!');
-
-}
+  addTrack = () => {
+    console.log("Track Add!");
+  };
 
   removeTrack = removedTrack => {
     const searchResults = this.state.searchResults.filter(
       track => removedTrack.id !== track.id
     );
     this.setState({ searchResults: searchResults });
-    console.log(searchResults, 'Track removed');
+    console.log(searchResults, "Track removed");
   };
 
   render() {
@@ -51,7 +50,7 @@ addTrack=()=>{
             <PlayList
               playListName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
-              onRemove = {this.removeTrack}
+              onRemove={this.removeTrack}
             />
           </div>
         </div>
