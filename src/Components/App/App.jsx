@@ -20,8 +20,16 @@ class App extends Component {
     ],
     isRemoval: false
   };
-  addTrack = () => {
-    console.log("Track Add!");
+  addTrack = addedTrack => {
+    console.log(addedTrack);
+    console.log("Track added!");
+
+    let playlistTracks = [...this.state.playlistTracks];
+
+    playlistTracks.push(addedTrack);
+    console.log(playlistTracks);
+    return playlistTracks;
+    this.setState({ playlistTracks });
   };
 
   removeTrack = removedTrack => {
