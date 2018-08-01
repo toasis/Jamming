@@ -3,7 +3,7 @@ const RedirectURI = "http://localhost:3000/"
 
 
 const Spotify = {
-  getAccessToken() {
+  getAccessToken(accessToken) {
     if (accessToken) {
       return accessToken;
     }
@@ -13,7 +13,7 @@ const Spotify = {
       accessToken = accessTokenMatch[1];
       const expiresIn = Number(expiresInMatch[1]);
       window.setTimeout(() => accessToken = '', expiresIn * 1000);}}
-
+        if()
 
 
     }
