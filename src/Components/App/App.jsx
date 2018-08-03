@@ -3,6 +3,7 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import PlayList from "../PlayList/Playlist";
+import Spotify from "../../util/Spotify";
 class App extends Component {
   state = {
     searchResults: [
@@ -21,16 +22,14 @@ class App extends Component {
     isRemoval: false
   };
   addTrack = clickedTrack => {
-    console.log(clickedTrack);
     let playlistTracks = [...this.state.playlistTracks];
     playlistTracks.push(clickedTrack);
-    console.log(playlistTracks);
+
     this.setState({ playlistTracks });
     console.log("Track added!");
   };
 
   removeTrack = clickedTrack => {
-    console.log(clickedTrack);
     let playlistTracks = [...this.state.playlistTracks];
     playlistTracks = playlistTracks.filter(
       track => clickedTrack.id !== track.id
@@ -47,11 +46,13 @@ class App extends Component {
   };
 
   savePlaylist = () => {
-    console.log("Saved to playlist!");
+    Spotify.savePlaylist();
+    this.playlistName = "New PlayList";
+    this.playlistTracks = [];
   };
 
   search = () => {
-    console.log("This is a search term");
+    Spotify.search();
   };
 
   render() {
