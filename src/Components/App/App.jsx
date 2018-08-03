@@ -7,17 +7,17 @@ import Spotify from "../../util/Spotify";
 class App extends Component {
   state = {
     searchResults: [
-      { name: "song A", artist: "artist A", album: "Album A", id: 1 },
-      { name: "song B", artist: "artist B", album: "Album B", id: 2 },
-      { name: "song C", artist: "artist C", album: "Album C", id: 3 },
-      { name: "song D", artist: "artist D", album: "Album D", id: 4 },
-      { name: "song E", artist: "artist E", album: "Album E", id: 5 }
+      // { name: "song A", artist: "artist A", album: "Album A", id: 1 },
+      // { name: "song B", artist: "artist B", album: "Album B", id: 2 },
+      // { name: "song C", artist: "artist C", album: "Album C", id: 3 },
+      // { name: "song D", artist: "artist D", album: "Album D", id: 4 },
+      // { name: "song E", artist: "artist E", album: "Album E", id: 5 }
     ],
     playlistName: "stronger",
     playlistTracks: [
-      { name: "song A1", artist: "artist A1", album: "Album A1", id: 6 },
-      { name: "song B1", artist: "artist B1", album: "Album B1", id: 7 },
-      { name: "song C1", artist: "artist C", album: "Album C1", id: 8 }
+      // { name: "song A1", artist: "artist A1", album: "Album A1", id: 6 },
+      // { name: "song B1", artist: "artist B1", album: "Album B1", id: 7 },
+      // { name: "song C1", artist: "artist C", album: "Album C1", id: 8 }
     ],
     isRemoval: false
   };
@@ -39,7 +39,6 @@ class App extends Component {
   };
 
   updatePlaylistName = name => {
-    console.log(name);
     let playlistName = this.state.playlistName;
     playlistName = name;
     this.setState({ playlistName });
@@ -51,8 +50,12 @@ class App extends Component {
     this.playlistTracks = [];
   };
 
-  search = () => {
-    Spotify.search();
+  search = term => {
+    Spotify.search(term).then(tracks => {
+      this.setState({
+        searchResults: tracks
+      });
+    });
   };
 
   render() {

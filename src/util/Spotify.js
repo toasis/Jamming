@@ -19,6 +19,7 @@ const Spotify = {
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
       window.location = accessUrl;
+      console.log(accessToken);
     }
   },
 
@@ -40,7 +41,7 @@ const Spotify = {
               name: track.name,
               artist: track.artists[0].name,
               album: track.album.name,
-              uri: track.uri,
+              uri: track.uri
             };
           })
         } else return [];
