@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Jammming
 
-##How Jammming App works
+## How Jammming App works
 
 1.  Enter a song, artist or album you like, click "Search" button
 2.  Add any result you like through '+' button on the right to your playlist
