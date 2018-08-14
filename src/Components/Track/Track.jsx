@@ -3,6 +3,7 @@ import "./Track.css";
 class Track extends Component {
   render() {
     const { onAdd, onRemove, track, isRemoval } = this.props;
+
     const buttonAdd = (
       <a className="Track-action" onClick={onAdd}>
         +
@@ -13,7 +14,7 @@ class Track extends Component {
         -
       </a>
     );
-    // console.log(this.props.onAdd);
+
     return (
       <div className="Track">
         <div className="Track-information">

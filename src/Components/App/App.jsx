@@ -40,10 +40,10 @@ class App extends Component {
     console.log(playlistTracks, "Track removed!");
   };
 
-  //不能正确的工作
+  //TODO: 如何把字符的输入转化成
   updatePlaylistName = name => {
-    console.log(this.state);
-    this.setState({ playlistName: name });
+    let newPlaylistName = name;
+    this.setState({ playlistName: newPlaylistName });
   };
 
   //不能正确的工作
@@ -76,6 +76,7 @@ class App extends Component {
         </h1>
         <div className="App">
           <SearchBar onSearch={this.handleSearch} />
+
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}

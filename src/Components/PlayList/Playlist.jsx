@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import TrackList from "../TrackList/TrackList";
 import "./Playlist.css";
 class PlayList extends Component {
-  handleNameChange = e => {
-    e.preventDefault();
-    const searchInput = e.target.element.searchInput.value;
-    console.log(searchInput);
+  // handleNameChange = e => {
+  //   e.preventDefault();
+  //   const searchInput = e.target.element.searchInput.value;
+  //   console.log(searchInput);
 
-    //return this.props.onNameChange;
-  };
+  //   //return this.props.onNameChange;
+  // };
   render() {
     const {
       playlistTracks,
@@ -19,11 +19,15 @@ class PlayList extends Component {
 
     return (
       <div className="Playlist">
-        <input
-          defaultValue="New Playlist"
-          onChange={onPlaylistNameChange}
-          name="searchInput"
-        />
+        <label>
+          Update playlist name below
+          <input
+            defaultValue="New Play List"
+            id="playlistName"
+            type="text"
+            onChange={onPlaylistNameChange}
+          />
+        </label>
         <TrackList
           tracks={playlistTracks}
           onRemove={onRemove}
