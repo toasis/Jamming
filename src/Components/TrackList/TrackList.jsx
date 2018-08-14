@@ -3,6 +3,8 @@ import Track from "../Track/Track";
 import "./TrackList.css";
 class TrackList extends Component {
   render() {
+    const { onAdd, onRemove, isRemoval } = this.props;
+
     return (
       <div className="TrackList">
         {this.props.tracks.map(track => {
@@ -10,9 +12,9 @@ class TrackList extends Component {
             <Track
               key={track.id}
               track={track}
-              onAdd={this.props.onAdd}
-              onRemove={this.props.onRemove}
-              isRemoval={this.props.isRemoval}
+              onAdd={onAdd}
+              onRemove={onRemove}
+              isRemoval={isRemoval}
             />
           );
         })}
