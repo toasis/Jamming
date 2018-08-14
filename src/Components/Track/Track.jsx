@@ -22,27 +22,28 @@ class Track extends Component {
   // };
 
   render() {
+    const { onAdd, onRemove, track, isRemoval } = this.props;
     const buttonAdd = (
-      <a className="Track-action" onClick={this.props.onAdd}>
+      <a className="Track-action" onClick={onAdd}>
         Remove -
       </a>
     );
     const buttonRemove = (
-      <a className="Track-action" onClick={this.props.onRemove}>
+      <a className="Track-action" onClick={onRemove}>
         Add +
       </a>
     );
-    console.log(this.props);
+    console.log(this.props.onAdd);
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>{this.props.track.name} </h3>
+          <h3>{track.name} </h3>
           <p>
-            {this.props.track.artist} | {this.props.track.album}
+            {track.artist} | {track.album}
           </p>
         </div>
         {/* {this.renderAction()} */}
-        {this.props.isRemoval ? buttonAdd : buttonRemove}
+        {isRemoval ? buttonAdd : buttonRemove}
       </div>
     );
   }
