@@ -12,8 +12,8 @@ class TrackList extends Component {
             <Track
               key={track.id}
               track={track}
-              onAdd={onAdd}
-              onRemove={onRemove}
+              onAdd={() => onAdd(track)}
+              onRemove={() => onRemove(track)}
               isRemoval={isRemoval}
             />
           );
