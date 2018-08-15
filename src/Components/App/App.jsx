@@ -21,7 +21,7 @@ class App extends Component {
       { name: "song C1", artist: "artist C", album: "Album C1", id: 8 }
     ],
     isRemoval: false,
-    searchTerm: ""
+    searchTerm: "love"
   };
 
   addTrack = clickedTrack => {
@@ -49,9 +49,21 @@ class App extends Component {
 
   //不能正确的工作
   savePlaylist = e => {
-    e.preventDefault();
-    console.log("playlist saved");
-    console.log(e);
+    let playlistName = this.state.playlistName;
+    let trackURIs = [];
+    this.state.playlistTracks.forEach(track => {
+      trackURIs.push("spotify:track:" + track.id);
+    });
+    Spotify.savePlaylist(playlistName, trackURIs);
+    this.setState({
+      searchResults: [],
+      searchTerm: "",
+      playlistTracks: [],
+      playlistName: ""
+    });
+    // Because defaultValue doesn't update after initial load
+    // document.getElementById('searchBar').value = '';
+    // document.getElementById('playlistName').value = newPlaylistName;
   };
 
   handleSearchChange = e => {
@@ -67,11 +79,11 @@ class App extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   console.log("component did mount");
+  componentDidMount() {
+    console.log("component did mount");
 
-  //   Spotify.getAccessToken();
-  // }
+    Spotify.getAccessToken();
+  }
 
   render() {
     return (
@@ -83,6 +95,7 @@ class App extends Component {
         </h1>
         <div className="App">
           <SearchBar
+            searchTerm={this.state.searchTerm}
             onSearch={this.handleSearch}
             onChange={this.handleSearchChange}
           />
