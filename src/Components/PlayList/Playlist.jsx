@@ -4,7 +4,7 @@ import "./Playlist.css";
 class PlayList extends Component {
 
   render() {
-    const { playlistName, playlistTracks, onRemove, onSave, onChange } = this.props;
+    const { playlistName, playlistTracks, onRemove, onSubmit, onChange } = this.props;
 
     return (
 
@@ -23,7 +23,7 @@ class PlayList extends Component {
           onRemove={onRemove}
           isRemoval="true"
         />
-        <a className="Playlist-save" onSubmit={onSave}>
+        <a className="Playlist-save" onSubmit={(e)=>onSubmit(e)}>
           SAVE TO SPOTIFY
         </a>
       </div>

@@ -5,7 +5,7 @@ let accessToken = "";
 const Spotify = {
   getAccessToken() {
     if (accessToken) {
-      console.log(accessToken);
+      console.log(`accessToken: ${accessToken}`);
       return accessToken;
     }
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
@@ -18,19 +18,21 @@ const Spotify = {
       return accessToken;
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
+
       window.location = accessUrl;
       console.log(accessUrl);
     }
   },
 
   search(term) {
-    accessToken = Spotify.getAccessToken();
+    const accessToken = Spotify.getAccessToken();
     const fetchURL = `https://api.spotify.com/v1/search?type=track&q=${term}`;
     const headers = { headers: { Authorization: `Bearer  ${accessToken}` } };
     return fetch(fetchURL, headers)
       .then(
         response => {
           if (response.ok) {
+            console.log(response);
             return response.json();
           }
           throw new Error("Request failed!");

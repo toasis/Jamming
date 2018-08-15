@@ -20,7 +20,8 @@ class App extends Component {
       { name: "song B1", artist: "artist B1", album: "Album B1", id: 7 },
       { name: "song C1", artist: "artist C", album: "Album C1", id: 8 }
     ],
-    isRemoval: false
+    isRemoval: false,
+    searchTerm: ""
   };
 
   addTrack = clickedTrack => {
@@ -40,23 +41,25 @@ class App extends Component {
     console.log(playlistTracks, "Track removed!");
   };
 
-  //TODO: 如何把字符的输入转化成
+  //现在可以update this.state.playlistName了
   updatePlaylistName = e => {
     this.setState({ playlistName: e.target.value });
-    console.log(this.state.playlistName);
+    console.log(this.state);
   };
 
   //不能正确的工作
-  savePlaylist = event => {
-    event.preventDefault();
+  savePlaylist = e => {
+    e.preventDefault();
     console.log("playlist saved");
-    console.log(event);
+    console.log(e);
   };
 
-  //不能正确的工作
-  handleSearch = term => {
-    console.log(term);
+  handleSearchChange = e => {
+    this.setState({ searchTerm: e.target.value });
+    console.log(this.state);
+  };
 
+  handleSearch = term => {
     Spotify.search(term).then(tracks => {
       this.setState({
         searchResults: tracks
@@ -64,11 +67,11 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    console.log("component did mount");
+  // componentDidMount() {
+  //   console.log("component did mount");
 
-    Spotify.getAccessToken();
-  }
+  //   Spotify.getAccessToken();
+  // }
 
   render() {
     return (
@@ -79,7 +82,10 @@ class App extends Component {
           ing
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.handleSearch} />
+          <SearchBar
+            onSearch={this.handleSearch}
+            onChange={this.handleSearchChange}
+          />
 
           <div className="App-playlist">
             <SearchResults
@@ -93,7 +99,7 @@ class App extends Component {
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onChange={this.updatePlaylistName}
-              onSave={this.savePlaylist}
+              onSubmit={this.savePlaylist}
             />
           </div>
         </div>
