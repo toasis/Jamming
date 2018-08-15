@@ -14,7 +14,7 @@ class App extends Component {
       { name: "song D", artist: "artist D", album: "Album D", id: 4 },
       { name: "song E", artist: "artist E", album: "Album E", id: 5 }
     ],
-    playlistName: "stronger",
+    playlistName: "New Play List",
     playlistTracks: [
       { name: "song A1", artist: "artist A1", album: "Album A1", id: 6 },
       { name: "song B1", artist: "artist B1", album: "Album B1", id: 7 },
@@ -41,18 +41,22 @@ class App extends Component {
   };
 
   //TODO: 如何把字符的输入转化成
-  updatePlaylistName = name => {
-    let newPlaylistName = name;
-    this.setState({ playlistName: newPlaylistName });
+  updatePlaylistName = e => {
+    this.setState({ playlistName: e.target.value });
+    console.log(this.state.playlistName);
   };
 
   //不能正确的工作
-  savePlaylist = () => {
+  savePlaylist = event => {
+    event.preventDefault();
     console.log("playlist saved");
+    console.log(event);
   };
 
   //不能正确的工作
   handleSearch = term => {
+    console.log(term);
+
     Spotify.search(term).then(tracks => {
       this.setState({
         searchResults: tracks
@@ -85,10 +89,10 @@ class App extends Component {
             />
 
             <PlayList
-              playListName={this.state.playlistName}
+              playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
-              onPlayListNameChange={this.updatePlaylistName}
+              onChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
             />
           </div>
