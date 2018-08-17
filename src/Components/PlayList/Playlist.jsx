@@ -4,6 +4,7 @@ import "./Playlist.css";
 
 const Playlist = props => {
   const { playlistName, playlistTracks, onRemove, onSubmit, onChange } = props;
+
   return (
     <div className="Playlist">
       <label>
